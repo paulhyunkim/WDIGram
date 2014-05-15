@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<% @posts.each do |p| %>
+	<div>
+		<div><%= image_tag p.picture.url, class: "picture" %></div>
+		<%= p.caption %>
+		<strong>Tags:</strong>
+	  <%= p.tags %><br>
+	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName %>
+	</div>
+<% end %>
+
+

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @user.firstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @user.lastName %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @user.about %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<% @posts.each do |p| %>
+  <h3><%= p.caption %></h3>
+  <%= image_tag p.picture.url, width: '300' %>
+<% end %>
+
+<%= link_to 'Add Post', new_user_post_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

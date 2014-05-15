@@ -1,0 +1,19 @@
+<%= form_for [@user, @post], html: { multipart: true, class: "custom" } do |f| %>
+
+  <div class="field">
+    <%= f.label :caption %><br>
+    <%= f.text_field :caption %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %><br>
+    <%= f.text_field :tags %>
+  </div>
+  <div class="field">
+    <%= f.file_field :picture %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
