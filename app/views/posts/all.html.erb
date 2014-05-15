@@ -6,7 +6,9 @@
 		<%= p.caption %>
 		<strong>Tags:</strong>
 	  <%= p.tags %><br>
-	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName %>
+	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName + " on " + p.created_at.strftime("%A, %b %d") %>
+	 
+
 	</div>
 <% end %>
 
