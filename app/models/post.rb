@@ -12,5 +12,9 @@ class Post
   has_mongoid_attached_file :picture
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
+  # def duration
+  #   (Time.now - self.created_at).to_i.to_s
+  # end
+
 end
 

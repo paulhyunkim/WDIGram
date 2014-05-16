@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @user = User.find(params[:user_id])
+    @user = current_user
     @posts = Post.all
   end
 
@@ -17,42 +17,42 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = Post.new
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @post = @user.posts.new(post_params)
+    #@user = User.find(params[:user_id])
+    @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to user_path(params[:user_id])
+      redirect_to root_path
     else 
       render 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @post.update(post_params)
+    #     format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render action: 'edit' }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+    # @post.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to posts_url }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

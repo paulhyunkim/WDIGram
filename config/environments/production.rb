@@ -77,4 +77,13 @@ WDIgram::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['wdigram'],
+    :access_key_id => ENV['AKIAIKOLEJI7AKWPXORA'],
+    :secret_access_key => ENV['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']
+  }
+}
 end

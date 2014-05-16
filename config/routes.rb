@@ -1,11 +1,12 @@
 WDIgram::Application.routes.draw do
   
   root 'posts#all'
-  resources :users do
-    resources :posts do
-      resources :comments
-    end
+  resources :users
+
+  resources :posts do
+    resources :comments
   end
+  
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

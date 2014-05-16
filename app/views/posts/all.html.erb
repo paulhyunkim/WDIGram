@@ -6,7 +6,7 @@
 		<%= p.caption %>
 		<strong>Tags:</strong>
 	  <%= p.tags %><br>
-	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName + " on " + p.created_at.strftime("%A, %b %d") %>
+	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName + " " +distance_of_time_in_words_to_now(p.created_at) + " ago" %>
 	 
 
 	</div>
