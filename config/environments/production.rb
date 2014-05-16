@@ -85,5 +85,5 @@ WDIgram::Application.configure do
   #   :access_key_id => ENV['AKIAIKOLEJI7AKWPXORA'],
   #   :secret_access_key => ENV['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']
   # }
-}
+
 end
