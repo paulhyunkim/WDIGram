@@ -2,7 +2,8 @@
 
 <% @posts.each do |p| %>
 	<div>
-		<div><%= image_tag p.picture.url, class: "picture" %></div>
+
+		<div><%= image_tag p.picture.url, class: "picture", bucket: 'wdigram' %></div>
 		<%= p.caption %>
 		<strong>Tags:</strong>
 	  <%= p.tags %><br>
