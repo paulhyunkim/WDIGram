@@ -9,27 +9,31 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @user = User.find(current_user)
-    @post = Post.find(params[:post_id])
-    @comment = Comment.new
+    if current_user
+      @user = User.find(current_user)
+      @post = Post.find(params[:post_id])
+      @comment = Comment.new
+    else
+      redirect_to new_session_path
+    end
   end
 
   def edit
   end
 
   def create
+    
     @post = Post.find(params[:post_id])
     @user = current_user
     @comment = @post.comments.new(comment_params)
     @comment.user = @user
 
     if @comment.save
-
       redirect_to root_path
-
     else 
       render 'new'
     end
+    
   end
 
   def update
