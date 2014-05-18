@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('SourceSansPro-Light.ttf');
+   font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('Lato-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
 body {
   margin-top: 150px;
 }
@@ -10,6 +24,7 @@ a#logo {
 	font-size: 40px;
 	line-height: 30px;
 }
+
 .post {
 	margin-bottom: 60px;
 }
@@ -42,9 +57,9 @@ input.form-control {
 }
 
 a:hover {
-	-webkit-transition: color 0.2s ease;		
+	-webkit-transition: color 0.2s ease;
 	-moz-transition: color 0.2s ease;
 	-ms-transition: color 0.2s ease;
 	-o-transition: color 0.2s ease;
-	transition: color 0.2s ease;	
+	transition: color 0.2s ease;
 }
