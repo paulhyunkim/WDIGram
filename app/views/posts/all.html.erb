@@ -8,12 +8,8 @@
 			<%= image_tag p.picture.url(:large), class: "img-responsive img-rounded" %>
 			
 			<div class="post-details">
-			<div class="btn-group">
-				
-			  <div type="button" class="btn btn-success">Leave Comment</div>
-			  <button type="button" class="btn btn-success">Like</button>
-			  <button type="button" class="btn btn-success">See Post</button>
-			</div> <br>
+			<%= link_to "Leave comment", new_post_comment_path(p), class: "btn btn-success", type: "button" %>
+			 <br>
 				<%= p.caption %>
 				<strong>Tags:</strong>
 			  <%= p.tags %><br>
