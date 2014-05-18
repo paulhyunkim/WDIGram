@@ -10,6 +10,8 @@ gem 'twitter-bootswatch-rails-helpers'
 gem "therubyracer"
 gem 'less-rails-bootstrap'
 gem "less-rails"
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

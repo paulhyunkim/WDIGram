@@ -1,5 +1,20 @@
-<h1>New comment</h1>
+<div><%= image_tag @post.picture.url(:large), class: "img-responsive img-rounded" %></div>
+		<%= @post.caption %>
+		<strong>Tags:</strong>
+	  <%= @post.tags %><br>
+	  Posted by <%= link_to @post.user.firstName + " " + @post.user.lastName, current_user %>
+	  <%= distance_of_time_in_words_to_now(@post.created_at) + " ago" %>
+	  <%= link_to "Leave comment", @post %>
+		<br><br>
+	 
+<%= form_for [@post, @comment] do |f| %>
+	<div class="form-group">
+	  <label class="control-label" for="inputLarge">Large input</label>
+	
+	  <%= f.text_field :content, class: "form-control input-lg", id: "inputLarge" %>
+	  <%= f.submit class: "btn btn-primary btn-lg", value: "Submit"%> 
+	</div>
+<% end %>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', root_path %>
+

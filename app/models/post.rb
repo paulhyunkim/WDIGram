@@ -10,30 +10,30 @@ class Post
   belongs_to :user
   has_many :comments
   has_mongoid_attached_file :picture,
-     :styles => {
-      :original => ['1920x1680>', :jpg, :convert_options => "-auto-orient"],
-      :small    => ['100x100#',   :jpg, :convert_options => "-auto-orient"],
-      :medium   => ['250x250',    :jpg, :convert_options => "-auto-orient"],
-      :large    => ['600x600>',   :jpg, :convert_options => "-auto-orient"]
+  :styles => {
+      :original => ['1920x1680>', :jpg, :convert_options => "-auto-orient", :quality => 100],
+      :small    => ['100x100#',   :jpg, :convert_options => "-auto-orient", :quality => 100],
+      :medium   => ['250x250',    :jpg, :convert_options => "-auto-orient", :quality => 100],
+      :large    => ['600x600>',   :jpg, :convert_options => "-auto-orient", :quality => 100]
     }
-  attr_accessor :rotation_degrees, :rotate
     # :path           => ':picture/:id/:style.:extension',
     # :storage        => :s3,
     # # :url            => ':s3_alias_url',
     # # :s3_host_alias  => 'something.cloudfront.net',
     # :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
-    # :styles => {
-    #   :original => ['1920x1680>', :jpg],
-    #   :small    => ['100x100#',   :jpg],
-    #   :medium   => ['250x250',    :jpg],
-    #   :large    => ['500x500>',   :jpg]
-    # },
+    
     # # :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  validates :picture, :attachment_presence => true
+  validates_length_of :caption, :maximum => 140
 
-  # def duration
-  #   (Time.now - self.created_at).to_i.to_s
-  # end
+   def decide_style
+    if picture_content_type =~ %r{^(image|(x-)?application)/(bmp|jpeg|jpg|pjpeg|png|x-png)$}
+      "600x600>"
+    else
+      false
+    end
+  end
 
 end
 

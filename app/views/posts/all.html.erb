@@ -1,16 +1,62 @@
-<p id="notice"><%= notice %></p>
-
 <% @posts.each do |p| %>
-	<div>
+	<div class="row post">
 
-		<div><%= image_tag p.picture.url(:large), class: "img-responsive" %></div>
-		<%= p.caption %>
-		<strong>Tags:</strong>
-	  <%= p.tags %><br>
-	  <%= "Posted by " + p.user.firstName + " " + p.user.lastName + " " +distance_of_time_in_words_to_now(p.created_at) + " ago" %>
-	 
+		<!-- comments -->
+		<div class="col-md-5 comments-column hidden-sm hidden-xs">
+		  <% p.comments.each do |c| %>
+		  	<div class="comment">
+		  	<%= '"' + c.content + '"' %> -<%= c.user.firstName %> <%= image_tag c.user.picture.url(:small), class: "img-circle", width: 40 %>
+		  	</div>
+			<% end %>
+			<div><%= link_to "Leave comment", new_post_comment_path(p) %></div>
+	  </div>
 
-	</div>
+		<!-- photos -->
+		<div class="col-md-7 photo-column">
+			<%= image_tag p.picture.url(:large), class: "img-responsive img-rounded" %>
+			<%= p.caption %>
+			<strong>Tags:</strong>
+		  <%= p.tags %><br>
+		  Posted by <%= link_to p.user.firstName + " " + p.user.lastName, current_user %>
+
+		  <%= distance_of_time_in_words_to_now(p.created_at) + " ago" %>
+		  <%= link_to "Edit", p %>
+	  </div>
+	
+	  
+  </div>
 <% end %>
+
+
+	  
+
+
+<!-- Button trigger modal -->
+<!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  Leave Comment
+</button> -->
+
+<!-- Modal -->
+
+<div class="row">
+
+		<!-- comments -->
+		<div class="col-md-12 pagination">
+		  
+	  			<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+	  </div>
+	
+	  
+  </div>
+
+	  
+<di class="row pagination">
+<div class="col-md-10 col-md-offset-1">
+
+</div>v
+</div>
+
+
+
 
 

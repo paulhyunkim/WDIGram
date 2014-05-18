@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:edit, :update, :destroy]
@@ -10,10 +11,12 @@ class PostsController < ApplicationController
   end
 
   def all
-    @posts = Post.all.reverse
+    @posts = Post.all.reverse.paginate(:page => params[:page], :per_page => 10)
+    
   end
 
   def show
+
   end
 
   def new
@@ -47,12 +50,10 @@ class PostsController < ApplicationController
     # end
   end
 
+
   def destroy
-    # @post.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to posts_url }
-    #   format.json { head :no_content }
-    # end
+    Post.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private

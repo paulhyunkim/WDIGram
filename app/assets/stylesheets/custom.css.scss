@@ -1,3 +1,50 @@
 body {
-  margin-top: 80px;
+  margin-top: 150px;
+}
+
+.navbar-brand {
+	height: 70px;
+}
+
+a#logo {
+	font-size: 40px;
+	line-height: 30px;
+}
+.post {
+	margin-bottom: 60px;
+}
+
+.form-group .col-lg-2 {
+	padding-top: 10px;
+	text-align: right;
+}
+
+.form-group {
+	overflow: auto;
+}
+
+input.form-control {
+	margin-bottom: 5px;
+}
+
+.comments-column {
+	text-align: right;
+	padding-top: 10px;
+}
+
+.comment {
+	margin-bottom: 10px;
+	vertical-align: top;
+}
+
+.pagination {
+	text-align: center;
+}
+
+a:hover {
+	-webkit-transition: color 0.2s ease;		
+	-moz-transition: color 0.2s ease;
+	-ms-transition: color 0.2s ease;
+	-o-transition: color 0.2s ease;
+	transition: color 0.2s ease;	
 }

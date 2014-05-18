@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user)
     @post = Post.find(params[:post_id])
     @comment = Comment.new
   end
@@ -18,16 +18,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @post = Post.find(params[:post_id])
+    @user = current_user
+    @comment = @post.comments.new(comment_params)
+    @comment.user = @user
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @comment }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+
+      redirect_to root_path
+
+    else 
+      render 'new'
     end
   end
 
