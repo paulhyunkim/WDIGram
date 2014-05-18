@@ -18,13 +18,13 @@ class User
   has_many :posts
   has_many :comments
   has_mongoid_attached_file :picture,
-    :styles => {
-        :original => ['1920x1680>', :jpg],
-        :small    => ['100x100#',   :jpg],
-        :medium   => ['250x250',    :jpg],
-        :large    => ['500x500>',   :jpg]
-      },
-    :convert_options => { :all => '-background white -flatten +matte' }
+     :styles => {
+      :original => ['1920x1680>', :jpg, :convert_options => "-auto-orient"],
+      :small    => ['100x100#',   :jpg, :convert_options => "-auto-orient"],
+      :medium   => ['250x250',    :jpg, :convert_options => "-auto-orient"],
+      :large    => ['600x600>',   :jpg, :convert_options => "-auto-orient"]
+    }
+  
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   validates :firstName, presence: true, length: { maximum: 50 }

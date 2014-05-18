@@ -9,18 +9,25 @@ class Post
 
   belongs_to :user
   has_many :comments
-  has_mongoid_attached_file :picture
+  has_mongoid_attached_file :picture,
+     :styles => {
+      :original => ['1920x1680>', :jpg, :convert_options => "-auto-orient"],
+      :small    => ['100x100#',   :jpg, :convert_options => "-auto-orient"],
+      :medium   => ['250x250',    :jpg, :convert_options => "-auto-orient"],
+      :large    => ['600x600>',   :jpg, :convert_options => "-auto-orient"]
+    }
+  attr_accessor :rotation_degrees, :rotate
     # :path           => ':picture/:id/:style.:extension',
     # :storage        => :s3,
     # # :url            => ':s3_alias_url',
     # # :s3_host_alias  => 'something.cloudfront.net',
     # :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
-    # # :styles => {
-    # #   :original => ['1920x1680>', :jpg],
-    # #   :small    => ['100x100#',   :jpg],
-    # #   :medium   => ['250x250',    :jpg],
-    # #   :large    => ['500x500>',   :jpg]
-    # # },
+    # :styles => {
+    #   :original => ['1920x1680>', :jpg],
+    #   :small    => ['100x100#',   :jpg],
+    #   :medium   => ['250x250',    :jpg],
+    #   :large    => ['500x500>',   :jpg]
+    # },
     # # :convert_options => { :all => '-background white -flatten +matte' }
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 

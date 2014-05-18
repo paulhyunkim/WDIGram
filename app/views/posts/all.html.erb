@@ -3,7 +3,7 @@
 <% @posts.each do |p| %>
 	<div>
 
-		<div><%= image_tag p.picture.url, class: "picture img-responsive" %></div>
+		<div><%= image_tag p.picture.url(:large), class: "picture" %></div>
 		<%= p.caption %>
 		<strong>Tags:</strong>
 	  <%= p.tags %><br>
