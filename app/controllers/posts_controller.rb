@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def all
-    @posts = Post.all.reverse.paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.all.reverse.paginate(:page => params[:page], :per_page => 4)
     
   end
 
