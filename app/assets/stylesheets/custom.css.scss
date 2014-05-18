@@ -16,6 +16,7 @@ body {
   margin-top: 150px;
 }
 
+
 .navbar-brand {
 	height: 70px;
 }
@@ -44,11 +45,16 @@ input.form-control {
 
 .comments-column {
 	text-align: right;
-	padding-top: 10px;
+	overflow: scroll;
+	max-height: 600px;
 }
 
 .comment {
 	margin-bottom: 10px;
+	vertical-align: top;
+}
+
+.comment strong {
 	vertical-align: top;
 }
 
@@ -62,4 +68,38 @@ a:hover {
 	-ms-transition: color 0.2s ease;
 	-o-transition: color 0.2s ease;
 	transition: color 0.2s ease;
+}
+
+.comment img {
+	margin-left: 6px;
+}
+
+.btn-group {
+	margin-top: 10px;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    margin-top: 110px;
+  }
+  .photo-column img {
+  	margin: 0 0 0 auto;
+  } 
+  .comments-column {
+  	margin-right: 15px;
+  	margin-left: 15px;
+		overflow: visible;
+  }
+  .post-details {
+  	text-align: right;
+  	padding: 5px;
+  }
+  .btn-group {
+  	margin-right: -8px;
+  	margin-left: 15px;
+  }
+  .pagination {
+	margin: 0 auto;
+}
 }
