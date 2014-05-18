@@ -9,7 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require 'flatly.css'
+ *= require 'custom'
  */
 
 @font-face {
@@ -26,5 +27,24 @@
     font-style: normal;*/
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato';
+}
 
+p, div {
+	font-family: 'Source Sans Pro';
+}
+
+#logo {
+	font-family: 'Lato';
+	font-weight: 900;
+}
+
+.nav {
+	font-family: 'Lato';
+}
+
+.profile {
+	
+}
 

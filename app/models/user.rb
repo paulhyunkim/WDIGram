@@ -2,6 +2,8 @@ require "bcrypt"
 class User
   include Mongoid::Document
   include ActiveModel::SecurePassword
+  include Mongoid::Paperclip
+
   before_save { self.email = email.downcase }
   before_save { self.firstName = firstName.capitalize }
   before_save { self.lastName = lastName.capitalize }
@@ -15,6 +17,15 @@ class User
 
   has_many :posts
   has_many :comments
+  has_mongoid_attached_file :picture,
+    :styles => {
+        :original => ['1920x1680>', :jpg],
+        :small    => ['100x100#',   :jpg],
+        :medium   => ['250x250',    :jpg],
+        :large    => ['500x500>',   :jpg]
+      },
+    :convert_options => { :all => '-background white -flatten +matte' }
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
   validates :firstName, presence: true, length: { maximum: 50 }
   validates :lastName, presence: true, length: { maximum: 50 }

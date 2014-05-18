@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, only: [:index, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.all.sort_by { |u| u[:firstName] }
   end
 
   def show
@@ -55,6 +55,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:firstName, :lastName, :email, :about, :password, :password_confirmation)
+      params.require(:user).permit(:firstName, :lastName, :email, :about, :password, :password_confirmation, :picture)
     end
 end

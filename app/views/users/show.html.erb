@@ -30,6 +30,6 @@
   <%= image_tag p.picture.url, width: '300' %>
 <% end %>
 
-<%= link_to 'Add Post', new_user_post_path(@user) %> |
+<%= link_to 'Add Post', new_post_path(@user) %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -5,6 +5,11 @@ gem 'rails', '4.0.4'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'genghis', '~> 1.4.1'
+gem 'twitter-bootswatch-rails', '~> 3.1.1'
+gem 'twitter-bootswatch-rails-helpers'
+gem "therubyracer"
+gem 'less-rails-bootstrap'
+gem "less-rails"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
