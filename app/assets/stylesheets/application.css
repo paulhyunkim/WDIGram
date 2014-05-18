@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require 'flatly.css'
  *= require_self
+ *= require 'flatly.css'
  *= require 'custom'
  */
 
@@ -18,34 +18,4 @@ body {
 }
 
 
-@font-face {
-    font-family: 'Source Sans Pro';
-    src: url('SourceSansPro-Light.ttf');
- /*   font-weight: normal;
-    font-style: normal;*/
-}
-
-@font-face {
-    font-family: 'Lato';
-    src: url('Lato-Black.ttf');
-  /*  font-weight: 900;
-    font-style: normal;*/
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Lato';
-}
-
-p, div {
-	font-family: 'Source Sans Pro';
-}
-
-#logo {
-	font-family: 'Lato';
-	font-weight: 900;
-}
-
-.nav {
-	font-family: 'Lato';
-}
 
