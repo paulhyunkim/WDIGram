@@ -26,6 +26,7 @@ class User
     }
   
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  validates_attachment :picture, :presence => true
 
   validates :firstName, presence: true, length: { maximum: 50 }
   validates :lastName, presence: true, length: { maximum: 50 }
