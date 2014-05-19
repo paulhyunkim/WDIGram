@@ -9,6 +9,7 @@
       <%= image_tag p.picture.url(:large), class: "img-responsive img-rounded" %>   
       <div class="post-details">
       <%= link_to "Comment", new_post_comment_path(p), class: "btn btn-success", type: "button" %>
+      <%= link_to "Show", p, class: "btn btn-success", type: "button" %>
       <% if current_user == @user %>
         <%= link_to "Delete", p, method: :delete, class: "btn btn-danger", type: "button", data: { confirm: 'Are you sure?' } %>
       <% end %>

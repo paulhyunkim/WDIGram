@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
@@ -29,11 +30,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+    @user = User.find(params[:id])
+    if @user.update(params.require(:user).permit(user_params))
+      redirect_to user_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-    
   end
 
   private

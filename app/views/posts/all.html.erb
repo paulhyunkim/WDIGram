@@ -4,7 +4,7 @@
 		<!-- photos -->
 		<div class="col-sm-7 col-sm-push-5 photo-column">
 
-			<%= image_tag p.picture.url(:large), class: "img-responsive img-rounded" %>		
+			<%= image_tag p.picture.url(:large), class: "img-responsive img-rounded img-profile" %>		
 			<div class="post-details">
 			<%= link_to "Comment", new_post_comment_path(p), class: "btn btn-success", type: "button" %>
 			<%= link_to "Show", p, class: "btn btn-success", type: "button" %>
@@ -22,10 +22,12 @@
 			<div class="col-sm-5 col-sm-pull-7 comments-column well">
 			  
 			  <!-- photo-description -->
-			  <div class="first-comment">
-
-			  	<%= p.caption %> 
-			  	<%= p.user.firstName + " " + p.user.lastName.first %> <%= link_to image_tag(p.user.picture.url(:small), class: "img-circle", width: 40 ), p.user %>
+			  <div class="first-comment-box">
+					<div class="first-comment"><strong><%= '"' + p.caption + '"'%></strong>
+					</div>
+			  	<div class="user-icon">
+			  		<%= p.user.firstName + " " + p.user.lastName.first %> <%= link_to image_tag(p.user.picture.url(:small), class: "img-circle img-profile", width: 40 ), p.user %>
+		  		</div>
 			  	
 		
 				</div>
@@ -34,7 +36,7 @@
 			  <% p.comments.each do |c| %>
 			  	<div class="comment">
 				  	<%= c.content %> 
-				  	<%= c.user.firstName + " " + c.user.lastName.first %> <%= link_to image_tag(c.user.picture.url(:small), class: "img-circle", width: 40 ), c.user %>
+				  	<%= c.user.firstName + " " + c.user.lastName.first %> <%= link_to image_tag(c.user.picture.url(:small), class: "img-circle img-profile", width: 40 ), c.user %>
 			  	</div>
 				<% end %>
 				
