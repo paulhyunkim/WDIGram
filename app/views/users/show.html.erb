@@ -1,35 +1,82 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstName %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastName %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @user.about %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+<h1><%= @user.firstName + " " + @user.lastName + "'s Photos" %></h1>
 
 <% @posts.each do |p| %>
-  <h3><%= p.caption %></h3>
-  <%= image_tag p.picture.url, width: '300' %>
+  <div class="row post">
+
+    <!-- photos -->
+    <div class="col-sm-7 col-sm-push-5 photo-column">
+
+      <%= image_tag p.picture.url(:large), class: "img-responsive img-rounded" %>   
+      <div class="post-details">
+      <%= link_to "Comment", new_post_comment_path(p), class: "btn btn-success", type: "button" %>
+      <% if current_user == @user %>
+        <%= link_to "Delete", p, method: :delete, class: "btn btn-danger", type: "button", data: { confirm: 'Are you sure?' } %>
+      <% end %>
+       <br>
+        <%= p.caption %>
+        <strong>Tags:</strong>
+        <%= p.tags %><br>
+        Posted by <%= link_to p.user.firstName + " " + p.user.lastName, current_user %>
+        <%= distance_of_time_in_words_to_now(p.created_at) + " ago" %>
+        <%= link_to "Edit", p %>    
+      </div>
+    </div>
+  
+    <!-- comments -->
+    <%# if p.comments.count != 0 %>
+      <div class="col-sm-5 col-sm-pull-7 comments-column well">
+        
+        <!-- photo-description -->
+        <div class="first-comment">
+
+          <%= p.caption %> 
+          <%= p.user.firstName + " " + p.user.lastName.first %> <%= link_to image_tag(p.user.picture.url(:small), class: "img-circle", width: 40 ), p.user %>
+          
+    
+        </div>
+
+        <!-- comments -->
+        <% p.comments.each do |c| %>
+          <div class="comment">
+            <%= c.content %> 
+            <%= c.user.firstName + " " + c.user.lastName.first %> <%= link_to image_tag(c.user.picture.url(:small), class: "img-circle", width: 40 ), c.user %>
+          </div>
+        <% end %>
+        
+      </div>
+
+
+    
+  </div>
+
 <% end %>
 
-<%= link_to 'Add Post', new_post_path(@user) %> |
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+
+    
+
+
+<!-- Button trigger modal -->
+<!-- <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+  Leave Comment
+</button> -->
+
+<!-- Modal -->
+
+<div class="row">
+
+    <!-- comments -->
+    <div class="col-sm-12 pagination pagination-lg">
+      
+          <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
+  
+    
+  </div>
+
+   
+
+
+
+
+

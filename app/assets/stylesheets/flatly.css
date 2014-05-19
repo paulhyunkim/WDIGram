@@ -2133,6 +2133,7 @@ fieldset[disabled] .btn-primary.active {
   color: #ffffff;
   background-color: #13987e;
   border-color: #11866f;
+
 }
 .btn-success:active,
 .btn-success.active,
@@ -2287,7 +2288,6 @@ fieldset[disabled] .btn-danger.active {
 .btn-link {
   color: #18bc9c;
   font-weight: normal;
-  cursor: pointer;
   border-radius: 0;
 }
 .btn-link,

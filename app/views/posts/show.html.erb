@@ -1,21 +1,58 @@
 
+	<div class="row post">
+
+		<!-- photos -->
+		<div class="col-sm-7 col-sm-push-5 photo-column">
+
+			<%= image_tag @post.picture.url(:large), class: "img-responsive img-rounded" %>		
+			<div class="post-details">
+			<%= link_to "Comment", new_post_comment_path(@post), class: "btn btn-success", type: "button" %>
+			<% if current_user == @post.user %>
+        <%= link_to "Delete", @post, method: :delete, class: "btn btn-danger", type: "button", data: { confirm: 'Are you sure?' } %>
+      <% end %>
+			 <br>
+				<%= @post.caption %>
+				<strong>Tags:</strong>
+			  <%= @post.tags %><br>
+			  Posted by <%= link_to @post.user.firstName + " " + @post.user.lastName, current_user %>
+			  <%= distance_of_time_in_words_to_now(@post.created_at) + " ago" %>	
+			</div>
+	  </div>
+	
+		<!-- comments -->
+		<%# if p.comments.count != 0 %>
+			<div class="col-sm-5 col-sm-pull-7 comments-column well">
+			  
+			  <!-- photo-description -->
+			  <div class="first-comment">
+
+			  	<%= @post.caption %> 
+			  	<%= @post.user.firstName + " " + @post.user.lastName.first %> <%= link_to image_tag(@post.user.picture.url(:small), class: "img-circle", width: 40 ), @post.user %>
+			  	
+		
+				</div>
+
+				<!-- comments -->
+			  <% @post.comments.each do |c| %>
+			  	<div class="comment">
+				  	<%= c.content %> 
+				  	<%= c.user.firstName + " " + c.user.lastName.first %> <%= link_to image_tag(c.user.picture.url(:small), class: "img-circle", width: 40 ), c.user %>
+			  	</div>
+				<% end %>
+				
+		  </div>
 
 
- 
+	  
+  </div>
 
-	<div><%= image_tag @post.picture.url(:large), class: "img-responsive img-rounded" %></div>
-		<%= @post.caption %>
-		<strong>Tags:</strong>
-	  <%= @post.tags %><br>
-	  Posted by <%= link_to @post.user.firstName + " " + @post.user.lastName, current_user %>
-	  <%= distance_of_time_in_words_to_now(@post.created_at) + " ago" %>
-	  <%= link_to "Leave comment", @post %>
-		<br><br>
-				<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+
+
+
 
 	 
-<%= form_for @post do |f| %>
-<% end %>
 
 
 

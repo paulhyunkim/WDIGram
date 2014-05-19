@@ -1,19 +1,20 @@
-<h1>Listing users</h1>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
 
-  
-    <% @users.each do |user| %>
-    
-        <h3><%= user.firstName + " " + user.lastName %></h3>
-        <%= user.email %>
-        <div><%= image_tag user.picture.url(:small), class: "img-circle" %></div>
+	<h1>All Users</h1>
+		<div class="well bs-component">
+
+      <% @users.each do |u| %>
+      <div class="row user-list">
+        <div class="col-sm-3"><%= link_to image_tag(u.picture.url(:small), class: "img-circle user-list-photos", width: 80), u %></div>
+        <div class="col-sm-9">
+          <h4><strong><%= u.firstName + " " + u.lastName %></strong></h4>
+          <%= u.email %>
+        </div>
         
-        <%= link_to 'Show', user %>
-        <%= link_to 'Edit', edit_user_path(user) %>
-       
-   
-    <% end %>
+      </div>
+      <% end %>
  
-
-<br>
-
-<%= link_to 'New User', new_user_path %>
+		</div>
+	</div>
+</div>
