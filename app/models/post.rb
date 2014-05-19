@@ -12,8 +12,6 @@ class Post
   has_mongoid_attached_file :picture,
   :styles => {
       :original => ['1920x1680>', :jpg, :convert_options => "-auto-orient", :quality => 100],
-      :small    => ['100x100#',   :jpg, :convert_options => "-auto-orient", :quality => 100],
-      :medium   => ['250x250',    :jpg, :convert_options => "-auto-orient", :quality => 100],
       :large    => ['600x600>',   :jpg, :convert_options => "-auto-orient", :quality => 100]
     }
     # :path           => ':picture/:id/:style.:extension',
