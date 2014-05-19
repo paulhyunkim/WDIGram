@@ -26,6 +26,7 @@ class Post
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
   validates :picture, :attachment_presence => true
   validates_length_of :caption, :maximum => 140
+  validates_presence_of :caption
 
    def decide_style
     if picture_content_type =~ %r{^(image|(x-)?application)/(bmp|jpeg|jpg|pjpeg|png|x-png)$}

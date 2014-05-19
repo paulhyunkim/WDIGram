@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    session[:remember_token] = @user.id.to_s
     if @user.save
       flash[:success] = "You have signed up successfully"
       redirect_to :root
