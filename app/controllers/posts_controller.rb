@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def all
     @posts = Post.all.reverse.paginate(:page => params[:page], :per_page => 8)
-    
   end
 
   def show
